@@ -1,7 +1,10 @@
 import styles from "./Navigation.module.scss";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function Navigation() {
+  const { cart } = useSelector((store) => store);
+
   const getClassName = ({ isActive }) => {
     return isActive ? styles.activeLink : styles.link;
   };
@@ -16,6 +19,7 @@ export default function Navigation() {
       </NavLink>
       <NavLink to="/bucket" className={getClassName}>
         Bucket
+        <span>({cart.length})</span>
       </NavLink>
     </nav>
   );

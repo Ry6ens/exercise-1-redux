@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addProductAction } from "../redux/actions";
 
 export default function Home() {
   const [goods, setGoods] = useState([]);
   const dispatch = useDispatch();
+  const { cart } = useSelector((store) => store);
 
   useEffect(() => {
     function fetchGoods() {
@@ -16,7 +17,9 @@ export default function Home() {
   }, []);
 
   function handleClick(item) {
-    dispatch(addProductAction(item));
+    cart.find(({ id }) => item.id === id)
+      ? alert("Already exists")
+      : dispatch(addProductAction(item));
   }
 
   return (
