@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addProductAction } from "../redux/actions";
+// import { addProductAction } from "../redux/actions";
+import { addProductAction } from "../redux/toolkit/actions";
 
 export default function Home() {
   const [goods, setGoods] = useState([]);
   const dispatch = useDispatch();
-  const { cart } = useSelector((store) => store);
+  const {
+    cart: { items: cart },
+  } = useSelector((store) => store);
 
   useEffect(() => {
     function fetchGoods() {
@@ -25,11 +28,11 @@ export default function Home() {
   return (
     <>
       <ol>
-        {goods.map((item) => (
-          <li key={item.name} onClick={() => handleClick(item)}>
-            {item.name} - {item.price}
+        { goods.map((item) => (
+          <li key={ item.name } onClick={ () => handleClick(item) }>
+            { item.name } - { item.price }
           </li>
-        ))}
+        )) }
       </ol>
     </>
   );

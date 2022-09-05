@@ -1,8 +1,12 @@
+
+import { persistStore } from 'redux-persist'
 import { configureStore } from "@reduxjs/toolkit";
-import cartReducer from "./reducer";
+import { persistedReducer } from "./rootReducer";
 
 export const store = configureStore({
   reducer: {
-    cart: cartReducer,
+    cart: persistedReducer,
   },
 });
+
+export const persistedStore = persistStore(store)

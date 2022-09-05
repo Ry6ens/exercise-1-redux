@@ -6,7 +6,7 @@ import "./App.css";
 
 import Header from "./components/Header/Header";
 import Home from "./pages/Home";
-// import Menu from './'
+import Menu from "./pages/Menu";
 import Bucket from "./pages/Bucket";
 
 import { Container } from "./components/Container/Container";
@@ -17,7 +17,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* <Route path="/menu" element={<Menu />} /> */}
+        <Route path="/menu" element={<Menu />} />
         <Route path="/bucket" element={<Bucket />} />
       </Routes>
     </Container>

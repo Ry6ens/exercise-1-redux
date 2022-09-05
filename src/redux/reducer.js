@@ -1,6 +1,6 @@
 import { addProduct, removeProduct } from "./types";
 
-export default function cartReducer(prevState = [], { type, payload }) {
+export function cartReducer(prevState = [], { type, payload }) {
   switch (type) {
     case addProduct:
       return [...prevState, payload];
@@ -8,5 +8,12 @@ export default function cartReducer(prevState = [], { type, payload }) {
       return prevState.filter((el) => el.id !== payload);
     default:
       return prevState;
+  }
+}
+
+export function filterCartReducer(prevstate = "", { type, payload }) {
+  switch (type) {
+    default:
+      return prevstate;
   }
 }
